@@ -1,4 +1,4 @@
-package com.thoughtworks.jpa.mall.model;
+package com.thoughtworks.jpa.mall.entity;
 
 import javax.persistence.*;
 

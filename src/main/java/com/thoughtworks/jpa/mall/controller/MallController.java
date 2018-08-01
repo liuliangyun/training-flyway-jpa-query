@@ -1,9 +1,8 @@
 package com.thoughtworks.jpa.mall.controller;
 
-import com.thoughtworks.jpa.mall.model.Commodity;
+import com.thoughtworks.jpa.mall.entity.Commodity;
 import com.thoughtworks.jpa.mall.service.LocalMallService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,18 +39,18 @@ public class MallController {
         localMallService.updateOne(id,commodity);
     }
 
-    @GetMapping("/commodities/filter/type")
-    public List<Commodity> filterByType(@RequestParam String type) {
-        return localMallService.filterByType(type);
-    }
+//    @GetMapping("/commodities/filter/type")
+//    public List<Commodity> filterByType(@RequestParam String type) {
+//        return localMallService.filterByType(type);
+//    }
+//
+//    @GetMapping("/commodities/filter/price")
+//    public List<Commodity> filterByPrice(@RequestParam double minPrice, double maxPrice){
+//        return localMallService.filterByPrice(minPrice,maxPrice);
+//    }
 
-    @GetMapping("/commodities/filter/price")
-    public List<Commodity> filterByPrice(@RequestParam double minPrice, double maxPrice){
-        return localMallService.filterByPrice(minPrice,maxPrice);
-    }
-
-    @GetMapping("/commodities/filter/type/price")
-    public List<Commodity> filterByTypeAndPrice(@RequestParam String type, double minPrice, double maxPrice){
+    @GetMapping("/commodities/filter")
+    public List<Commodity> filterByTypeAndPrice(@RequestParam(value = "type", required = false) String type, @RequestParam(value = "minPrice", required = false) double minPrice, double maxPrice){
         return localMallService.filterByTypeAndPrice(type,minPrice,maxPrice);
     }
 

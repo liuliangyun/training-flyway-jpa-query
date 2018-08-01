@@ -1,11 +1,9 @@
 package com.thoughtworks.jpa.mall.service;
 
-import com.thoughtworks.jpa.mall.model.Commodity;
+import com.thoughtworks.jpa.mall.entity.Commodity;
 import com.thoughtworks.jpa.mall.repository.MallRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -82,7 +80,8 @@ public class LocalMallService implements MallService{
 
     @Override
     public List<Commodity> filterByTypeAndPrice(String type, double minPrice, double maxPrice) {
-        return mallRepository.findByTypeAndPriceBetween(type,minPrice,maxPrice);
+        //return mallRepository.findByTypeAndPriceBetween(type,minPrice,maxPrice);
+        return mallRepository.filter(type,minPrice,maxPrice);
     }
 
     @Override

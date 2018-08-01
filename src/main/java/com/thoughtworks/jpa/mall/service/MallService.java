@@ -1,7 +1,6 @@
 package com.thoughtworks.jpa.mall.service;
 
-import com.thoughtworks.jpa.mall.model.Commodity;
-import org.springframework.data.domain.Page;
+import com.thoughtworks.jpa.mall.entity.Commodity;
 
 import java.util.List;
 

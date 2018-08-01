@@ -1,13 +1,13 @@
 package com.thoughtworks.jpa.mall.repository;
 
-import com.thoughtworks.jpa.mall.model.Commodity;
+import com.thoughtworks.jpa.mall.entity.Commodity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface MallRepository extends JpaRepository<Commodity, Integer> {
+public interface MallRepository extends JpaRepository<Commodity, Integer>, MallRepositoryCustom{
 
     List<Commodity> findByType(String type);
 
