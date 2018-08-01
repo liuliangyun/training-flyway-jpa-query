@@ -57,13 +57,13 @@ public class MallController {
 
 
     @GetMapping("/commodities/page")
-    public List<Commodity> listAllPages() {
-        return localMallService.listAllPages(10,2);
+    public List<Commodity> listAllPages(@RequestParam(value = "pageNum", defaultValue = "0") int pageNum, @RequestParam(value = "pageSize", required = false) int pageSize) {
+        return localMallService.listAllPages(pageNum,pageSize);
     }
 
     @GetMapping("/commodities/page/sort")
-    public List<Commodity> listAllPagesAndSort() {
-        return localMallService.listAllPagesAndSort(10,2);
+    public List<Commodity> listAllSortedPages(@RequestParam(value = "pageNum", defaultValue = "0") int pageNum, @RequestParam(value = "pageSize", required = false) int pageSize, @RequestParam(value = "order") String order) {
+        return localMallService.listAllSortedPages(pageNum,pageSize,order);
     }
 
 

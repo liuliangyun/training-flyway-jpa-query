@@ -58,14 +58,15 @@ public class LocalMallService implements MallService{
     public void updateOne(int id, Commodity commodity) {
         Optional<Commodity> selectedCommodity = mallRepository.findById(id);
         if(selectedCommodity.isPresent()){
-            selectedCommodity.get().setName(commodity.getName());
-            selectedCommodity.get().setPrice(commodity.getPrice());
-            selectedCommodity.get().setType(commodity.getType());
-            selectedCommodity.get().setBand(commodity.getBand());
-            selectedCommodity.get().setDescription(commodity.getDescription());
-            selectedCommodity.get().setDate(commodity.getDate());
-            selectedCommodity.get().setLocation(commodity.getLocation());
-            mallRepository.save(selectedCommodity.get());
+            Commodity commodity1 = selectedCommodity.get();
+            commodity1.setName(commodity.getName());
+            commodity1.setPrice(commodity.getPrice());
+            commodity1.setType(commodity.getType());
+            commodity1.setBand(commodity.getBand());
+            commodity1.setDescription(commodity.getDescription());
+            commodity1.setDate(commodity.getDate());
+            commodity1.setLocation(commodity.getLocation());
+            mallRepository.save(commodity1);
         }
     }
 
@@ -85,18 +86,16 @@ public class LocalMallService implements MallService{
     }
 
     @Override
-    public List<Commodity> listAllPages(int pages, int size) {
-        Pageable pageable = PageRequest.of(pages, size);
-        //Pageable pageable = new PageRequest(pages, size, Sort.Direction.ASC, "id");
-        return mallRepository.findAll(pageable).getContent();
+    public List<Commodity> listAllPages(int pageNum, int pageSize) {
+        PageRequest page = PageRequest.of(pageNum, pageSize);
+        return mallRepository.findAll(page).getContent();
     }
 
     @Override
-    public List<Commodity> listAllPagesAndSort(int pages, int size) {
-        Sort sort = new Sort(Sort.Direction.ASC, "price");
-        Pageable pageable = PageRequest.of(pages, size, sort);
-        //Pageable pageable = new PageRequest(pages, size, sort);
-        return mallRepository.findAll(pageable).getContent();
+    public List<Commodity> listAllSortedPages(int pageNum, int pageSize, String order) {
+        Sort sort = new Sort(order.equals("ASC") ? Sort.Direction.ASC : Sort.Direction.DESC, "price");
+        PageRequest page = PageRequest.of(pageNum, pageSize, sort);
+        return mallRepository.findAll(page).getContent();
     }
 
 }

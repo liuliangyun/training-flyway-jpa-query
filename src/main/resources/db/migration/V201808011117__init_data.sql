@@ -1,0 +1,2 @@
+insert into mall_demo.commodities (id, name, price, type, band, description, date, location) values (1, "电视", 2299.00, "电器", "长虹", "长虹 55D3S 55英寸电视 4K超高清 智能WiFi网络 智能语音控制 蓝牙 平板电视机（黑色）", "2018.01.12", "China");
+insert into mall_demo.commodities (id, name, price, type, band, description, date, location) values (2, "巧克力", 29.90, "食品", "德芙", "德芙Dove巧克力分享碗装 香浓黑巧克力糖果巧克力休闲零食252g", "2018.07.22", "China")

@@ -14,4 +14,5 @@ public interface MallRepository extends JpaRepository<Commodity, Integer> {
     List<Commodity> findByPriceBetween(double minPrice,double maxPrice);
 
     List<Commodity> findByTypeAndPriceBetween(String type, double minPrice, double maxPrice);
+
 }

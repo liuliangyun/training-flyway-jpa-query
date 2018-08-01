@@ -23,7 +23,7 @@ public interface MallService {
 
     List<Commodity> filterByTypeAndPrice(String type, double minPrice, double maxPrice);
 
-    List<Commodity> listAllPages(int pages, int size);
+    List<Commodity> listAllPages(int pageNum, int pageSize);
 
-    List<Commodity> listAllPagesAndSort(int pages, int size);
+    List<Commodity> listAllSortedPages(int pageNum, int pageSize, String order);
 }
